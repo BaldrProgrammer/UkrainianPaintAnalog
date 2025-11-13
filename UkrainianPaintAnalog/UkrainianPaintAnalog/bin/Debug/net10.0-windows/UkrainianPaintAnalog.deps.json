@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "UkrainianPaintAnalog/1.0.0": {
+        "runtime": {
+          "UkrainianPaintAnalog.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "UkrainianPaintAnalog/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

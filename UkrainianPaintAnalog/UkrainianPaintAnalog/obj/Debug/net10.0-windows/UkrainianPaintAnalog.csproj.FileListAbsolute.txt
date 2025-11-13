@@ -1,0 +1,15 @@
+C:\Users\royal\RiderProjects\UkrainianPaintAnalog\UkrainianPaintAnalog\bin\Debug\net10.0-windows\UkrainianPaintAnalog.exe
+C:\Users\royal\RiderProjects\UkrainianPaintAnalog\UkrainianPaintAnalog\bin\Debug\net10.0-windows\UkrainianPaintAnalog.deps.json
+C:\Users\royal\RiderProjects\UkrainianPaintAnalog\UkrainianPaintAnalog\bin\Debug\net10.0-windows\UkrainianPaintAnalog.runtimeconfig.json
+C:\Users\royal\RiderProjects\UkrainianPaintAnalog\UkrainianPaintAnalog\bin\Debug\net10.0-windows\UkrainianPaintAnalog.dll
+C:\Users\royal\RiderProjects\UkrainianPaintAnalog\UkrainianPaintAnalog\bin\Debug\net10.0-windows\UkrainianPaintAnalog.pdb
+C:\Users\royal\RiderProjects\UkrainianPaintAnalog\UkrainianPaintAnalog\obj\Debug\net10.0-windows\UkrainianPaintAnalog.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\royal\RiderProjects\UkrainianPaintAnalog\UkrainianPaintAnalog\obj\Debug\net10.0-windows\UkrainianPaintAnalog.AssemblyInfoInputs.cache
+C:\Users\royal\RiderProjects\UkrainianPaintAnalog\UkrainianPaintAnalog\obj\Debug\net10.0-windows\UkrainianPaintAnalog.AssemblyInfo.cs
+C:\Users\royal\RiderProjects\UkrainianPaintAnalog\UkrainianPaintAnalog\obj\Debug\net10.0-windows\UkrainianPaintAnalog.csproj.CoreCompileInputs.cache
+C:\Users\royal\RiderProjects\UkrainianPaintAnalog\UkrainianPaintAnalog\obj\Debug\net10.0-windows\UkrainianPaintAnalog.sourcelink.json
+C:\Users\royal\RiderProjects\UkrainianPaintAnalog\UkrainianPaintAnalog\obj\Debug\net10.0-windows\UkrainianPaintAnalog.dll
+C:\Users\royal\RiderProjects\UkrainianPaintAnalog\UkrainianPaintAnalog\obj\Debug\net10.0-windows\refint\UkrainianPaintAnalog.dll
+C:\Users\royal\RiderProjects\UkrainianPaintAnalog\UkrainianPaintAnalog\obj\Debug\net10.0-windows\UkrainianPaintAnalog.pdb
+C:\Users\royal\RiderProjects\UkrainianPaintAnalog\UkrainianPaintAnalog\obj\Debug\net10.0-windows\UkrainianPaintAnalog.genruntimeconfig.cache
+C:\Users\royal\RiderProjects\UkrainianPaintAnalog\UkrainianPaintAnalog\obj\Debug\net10.0-windows\ref\UkrainianPaintAnalog.dll
