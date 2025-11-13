@@ -6,6 +6,10 @@ public partial class Form1 : Form
     private Point pastPos;
     private bool isPressed;
     
+    // данные кисти
+    private Color penColor;
+    private int penWidth;
+    
     public Form1()
     {
         CursorSpi = new Thread(SpiCursor);
@@ -26,11 +30,11 @@ public partial class Form1 : Form
             Console.WriteLine(isPressed);
             if (isPressed == false)
             {
-                g.FillRectangle(Brushes.Black, x, y, 1, 1);
+                g.FillRectangle(Brushes.Black, x-10, y-150, 1, 1);
             }
             else
             {
-                g.DrawLine(Pens.Black, new Point(pastPos.X, pastPos.Y), new Point(x, y));
+                g.DrawLine(new Pen(Color.Black, 5), new Point(pastPos.X-10, pastPos.Y-150), new Point(x-10, y-150));
             }
         }
         
@@ -41,13 +45,11 @@ public partial class Form1 : Form
     {
         while (true)
         {
-            if (MouseButtons == MouseButtons.Left)
+            if (MouseButtons == MouseButtons.Left && ActiveForm == this)
             {
                 Point pos = PointToClient(Cursor.Position);
                 if (pos.X <= ClientSize.Width && pos.Y <= ClientSize.Height &&  pos.X >= 0 && pos.Y >= 0)
                 {
-                    Console.WriteLine(pos);
-                    Console.WriteLine(pastPos);
                     FillPixel(pos.X, pos.Y);
                     SpinWait.SpinUntil(() => false, 1);
                     if (pos.X != pastPos.X || pos.Y != pastPos.Y)
@@ -55,7 +57,6 @@ public partial class Form1 : Form
                         isPressed = true;
                     }
                     pastPos = pos;
-                    Console.WriteLine("");
                 }
             }
             else
