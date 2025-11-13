@@ -23,6 +23,7 @@ public partial class Form1 : Form
 
         using (Graphics g = Graphics.FromImage(mainPcBx.Image))
         {
+            Console.WriteLine(isPressed);
             if (isPressed == false)
             {
                 g.FillRectangle(Brushes.Black, x, y, 1, 1);
@@ -43,10 +44,14 @@ public partial class Form1 : Form
                 if (pos.X <= ClientSize.Width && pos.Y <= ClientSize.Height &&  pos.X >= 0 && pos.Y >= 0)
                 {
                     Console.WriteLine(pos);
+                    Console.WriteLine(pastPos);
                     FillPixel(pos.X, pos.Y);
                     SpinWait.SpinUntil(() => false, 1);
+                    if (pos.X != pastPos.X || pos.Y != pastPos.Y)
+                    {
+                        isPressed = true;
+                    }
                     pastPos = pos;
-                    isPressed = true;
                 }
             }
             else
