@@ -10,24 +10,20 @@ public partial class Form1 : Form
         CursorSpi.Start();
         InitializeComponent();
     }
-    
-
-    private void Risuem(object sender, PaintEventArgs e)
-    {
-        e.Graphics.Clear(this.BackColor);
-        
-        e.Graphics.DrawLine(
-            new Pen(Color.Red, 3),
-            new Point(0, 0),
-            new Point(this.Width, this.Height));
-    }
 
     private void SpiCursor()
     {
         while (true)
         {
-            Console.WriteLine(Cursor.Position);
-            Thread.Sleep(10);
+            if (MouseButtons == MouseButtons.Left)
+            {
+                Point pos = PointToClient(Cursor.Position);
+                if (pos.X <= ClientSize.Width && pos.Y <= ClientSize.Height &&  pos.X >= 0 && pos.Y >= 0)
+                {
+                    Console.WriteLine(pos);
+                    Thread.Sleep(10);
+                }
+            }
         }
     }
 }

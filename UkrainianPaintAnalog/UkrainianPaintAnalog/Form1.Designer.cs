@@ -24,10 +24,9 @@ partial class Form1
         
         
         // glowne okno
-        this.mainPcBx.Size = new Size(200, 200);
+        this.mainPcBx.Size = new Size(400, 225);
         this.mainPcBx.Location = new Point(0, 0);
         this.mainPcBx.BackColor = Color.White;
-        this.mainPcBx.Paint += Risuem;
         
         this.Controls.AddRange(new System.Windows.Forms.Control[]
         {
