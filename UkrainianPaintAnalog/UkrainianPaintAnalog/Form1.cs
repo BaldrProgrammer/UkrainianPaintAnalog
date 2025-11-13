@@ -28,7 +28,10 @@ public partial class Form1 : Form
             {
                 g.FillRectangle(Brushes.Black, x, y, 1, 1);
             }
-            g.DrawLine(Pens.Black, new Point(pastPos.X, pastPos.Y), new Point(x, y));
+            else
+            {
+                g.DrawLine(Pens.Black, new Point(pastPos.X, pastPos.Y), new Point(x, y));
+            }
         }
         
         mainPcBx.Invalidate();
@@ -52,6 +55,7 @@ public partial class Form1 : Form
                         isPressed = true;
                     }
                     pastPos = pos;
+                    Console.WriteLine("");
                 }
             }
             else
