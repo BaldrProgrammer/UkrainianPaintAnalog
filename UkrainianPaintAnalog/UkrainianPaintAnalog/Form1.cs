@@ -18,6 +18,11 @@ public partial class Form1 : Form
         InitializeComponent();
     }
 
+    private void ChangeColor(object sender, EventArgs e)
+    {
+        
+    }
+
     private void FillPixel(int x, int y)
     {
         penWidth = 2;

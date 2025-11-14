@@ -7,6 +7,7 @@ partial class Form1
     private System.Windows.Forms.PictureBox mainPcBx;
     private System.Windows.Forms.Panel colorPanel;
     private System.Windows.Forms.Button colorBtn;
+    private System.Windows.Forms.PictureBox colorPicker;
 
     protected override void Dispose(bool disposing)
     {
@@ -23,6 +24,7 @@ partial class Form1
         // создание виджетов
         this.colorPanel = new Panel();
         this.mainPcBx = new PictureBox();
+        this.colorPicker = new PictureBox();
         
         this.SuspendLayout();
         
@@ -40,22 +42,29 @@ partial class Form1
         // панель
         this.colorPanel.BackColor = Color.White;
         this.colorPanel.Location = new Point(10, 10);
-        this.colorPanel.Size = new Size(750, 130);
+        this.colorPanel.Size = new Size(450, 90);
 
+        // colordialog кнопка
+        string imagePath = Path.Combine(Application.StartupPath, "sysmedia", "tsveta.png");
+        this.colorPicker.Image = Image.FromFile(imagePath);
+        this.colorPicker.SizeMode = PictureBoxSizeMode.StretchImage;
+        this.colorPicker.Location = new Point(15, 20);
+        this.colorPicker.Size = new Size(45, 45);
+        this.colorPanel.Controls.Add(this.colorPicker);
+        
         // кнопки
-        int startX = 10;
+        int startX = 75;
+        int buttonsY = 15;
         int diffrence = 30;
         for (int i = 0; i < colors.Count; i++)
         {
+            if (i == 10)
+            {
+                startX = 75;
+                buttonsY = 50;
+            }
             this.colorBtn = new Button();
-            if (i > 9)
-            {
-                this.colorBtn.Location = new Point(startX, 10);
-            }
-            else
-            {
-                this.colorBtn.Location = new Point(startX, 40);
-            }
+            this.colorBtn.Location = new Point(startX, buttonsY);
             this.colorBtn.BackColor = ColorTranslator.FromHtml("#" + colors[i]);
             this.colorBtn.Size = new Size(25, 25);
             colorPanel.Controls.Add(this.colorBtn);
@@ -63,8 +72,8 @@ partial class Form1
         }
         
         // главное окно для рисования
-        this.mainPcBx.Size = new Size(1180, 640);
-        this.mainPcBx.Location = new Point(10, 150);
+        this.mainPcBx.Size = new Size(1180, 680);
+        this.mainPcBx.Location = new Point(10, 110);
         this.mainPcBx.BackColor = Color.White;
         
         this.Controls.AddRange(new System.Windows.Forms.Control[]
