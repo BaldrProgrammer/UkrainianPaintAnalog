@@ -2,7 +2,10 @@ namespace UkrainianPaintAnalog;
 
 public partial class Form1 : Form
 {
-    private Thread CursorSpi;
+    // локер на поток
+    private readonly object _bmpLock = new object();
+    
+    // для работы холста
     private Point _pastPos;
     private bool _isPressed;
     
@@ -12,9 +15,9 @@ public partial class Form1 : Form
     
     public Form1()
     {
-        CursorSpi = new Thread(SpiCursor);
-        CursorSpi.IsBackground = true;
-        CursorSpi.Start();
+        Thread cursorSpi = new Thread(SpiCursor);
+        cursorSpi.IsBackground = true;
+        cursorSpi.Start();
         InitializeComponent();
     }
 
@@ -55,19 +58,22 @@ public partial class Form1 : Form
             mainPcBx.Image = new Bitmap(ClientSize.Width, ClientSize.Height);
         }
 
-        using (Graphics g = Graphics.FromImage(mainPcBx.Image))
+        lock (_bmpLock)
         {
-            Console.WriteLine(_isPressed);
-            if (_isPressed == false)
+            using (Graphics g = Graphics.FromImage(mainPcBx.Image))
             {
-                using (SolidBrush brush = new SolidBrush(_penColor))
+                Console.WriteLine(_isPressed);
+                if (_isPressed == false)
                 {
-                    g.FillRectangle(brush, x-10, y-110, _penWidth, 1);
+                    using (SolidBrush brush = new SolidBrush(_penColor))
+                    {
+                        g.FillRectangle(brush, x-10, y-110, _penWidth, 1);
+                    }
                 }
-            }
-            else
-            {
-                g.DrawLine(new Pen(_penColor, _penWidth), new Point(_pastPos.X-10, _pastPos.Y-110), new Point(x-10, y-110));
+                else
+                {
+                    g.DrawLine(new Pen(_penColor, _penWidth), new Point(_pastPos.X-10, _pastPos.Y-110), new Point(x-10, y-110));
+                }
             }
         }
         
