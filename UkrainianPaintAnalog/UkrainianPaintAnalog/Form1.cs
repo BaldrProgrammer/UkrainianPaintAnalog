@@ -14,7 +14,7 @@ public partial class Form1 : Form
     private float _penWidth = 2.0f;
     
     // куда сохранять файл
-    private string filePath;
+    private string? _filePath;
     
     public Form1()
     {
@@ -76,11 +76,34 @@ public partial class Form1 : Form
 
     private void Save(object sender, EventArgs e)
     {
-        filePath = @"C:\Users\Public\image.jpeg";
-        lock (_bmpLock)
+        if (_filePath != null)
         {
-            mainPcBx.Image.Save(filePath, System.Drawing.Imaging.ImageFormat.Jpeg);
+            lock (_bmpLock)
+            {
+                mainPcBx.Image.Save(_filePath, System.Drawing.Imaging.ImageFormat.Jpeg);
+            }
         }
+        else
+        {
+            SaveAs(null, null);
+        }
+    }
+    private void SaveAs(object? sender, EventArgs? e)
+    {
+        lock (_bmpLock) 
+        {
+            using (SaveFileDialog fd = new SaveFileDialog())
+            {
+                fd.Filter = "JPEG Image|*.jpg;*.jpeg|PNG Image|*.png";
+                _filePath = fd.FileName;
+                if (fd.ShowDialog() == DialogResult.OK)
+                {
+                    _filePath = fd.FileName;
+                    mainPcBx.Image.Save(_filePath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                }
+            }
+        }
+        
     }
 
     private void FillPixel(int x, int y)
