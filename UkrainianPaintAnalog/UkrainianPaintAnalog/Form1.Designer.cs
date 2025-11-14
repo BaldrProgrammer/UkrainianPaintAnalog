@@ -5,10 +5,14 @@ partial class Form1
     // инициализация объектов виджетов
     private System.ComponentModel.IContainer components = null;
     private System.Windows.Forms.PictureBox mainPcBx;
+    
     private System.Windows.Forms.Panel colorPanel;
     private System.Windows.Forms.Button colorBtn;
     private System.Windows.Forms.PictureBox colorPicker;
     private System.Windows.Forms.PictureBox colorShower;
+
+    private System.Windows.Forms.Panel sizePanel;
+    private System.Windows.Forms.Button sizeBtn;
 
     protected override void Dispose(bool disposing)
     {
@@ -24,11 +28,13 @@ partial class Form1
     {
         // создание виджетов
         this.colorPanel = new Panel();
+        this.sizePanel = new Panel();
         this.mainPcBx = new PictureBox();
         this.colorPicker = new PictureBox();
         this.colorShower = new PictureBox();
         
         this.SuspendLayout();
+        
         
         // сектор выбора цвета кисти
         List<string> colors = new List<string>()
@@ -41,7 +47,7 @@ partial class Form1
             "FFFF77", "99FF99", "99FFFF", "9999FF", "eebbff"
         };
         
-        // панель
+        // панель 
         this.colorPanel.BackColor = Color.White;
         this.colorPanel.Location = new Point(10, 10);
         this.colorPanel.Size = new Size(450, 90);
@@ -83,6 +89,31 @@ partial class Form1
         this.colorShower.BackColor = this._penColor;
         this.colorPanel.Controls.Add(this.colorShower);
         
+        
+        // сектор выбора ширины кисти
+        List<int> sizes = new List<int>() { 1, 3, 5, 8, 10 };
+        
+        // панель
+        this.sizePanel.BackColor = Color.White;
+        this.sizePanel.Location = new Point(475, 10);
+        this.sizePanel.Size = new Size(450, 90);
+        
+        // кнопки
+        int startXfs = 75;
+        int diffrencefs = 50;
+        for (int i = 0; i < sizes.Count; i++)
+        {
+            this.sizeBtn = new Button();
+            this.sizeBtn.Text = $"{sizes[i]}px";
+            this.sizeBtn.Location = new Point(startXfs, 15);
+            this.sizeBtn.Size = new Size(50, 25);
+            this.sizeBtn.Cursor = Cursors.Hand;
+            this.sizeBtn.MouseClick += this.ChangeWidth;
+            this.sizePanel.Controls.Add(this.sizeBtn);
+            startXfs += diffrencefs;
+        }
+        
+        
         // главное окно для рисования
         this.mainPcBx.Size = new Size(1180, 680);
         this.mainPcBx.Location = new Point(10, 110);
@@ -91,7 +122,7 @@ partial class Form1
         
         this.Controls.AddRange(new System.Windows.Forms.Control[]
         {
-            this.mainPcBx, this.colorPanel
+            this.mainPcBx, this.colorPanel, this.sizePanel
         });
         
         // редакция главного окна

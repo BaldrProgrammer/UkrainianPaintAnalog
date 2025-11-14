@@ -48,6 +48,18 @@ public partial class Form1 : Form
         colorShower.BackColor =  _penColor;
         colorShower.Invalidate();
     }
+    
+    private void ChangeWidth(object sender, EventArgs e)
+    {
+        Button? senderr = sender as Button;
+        if (senderr != null)
+        {
+            _penWidth = Convert.ToInt32(senderr.Text.Replace("px", ""));
+            Console.WriteLine(_penWidth);
+        }
+        colorShower.BackColor =  _penColor;
+        colorShower.Invalidate();
+    }
 
     private void FillPixel(int x, int y)
     {
