@@ -16,6 +16,10 @@ partial class Form1
     private System.Windows.Forms.Button sizeBtn;
     private System.Windows.Forms.TrackBar sizeBar;
 
+    private System.Windows.Forms.Panel modePanel;
+    
+    private System.Windows.Forms.Panel filePanel;
+
     protected override void Dispose(bool disposing)
     {
         if (disposing && (components != null))
@@ -36,6 +40,8 @@ partial class Form1
         this.sizePanel = new Panel();
         this.sizeLbl = new Label();
         this.sizeBar = new TrackBar();
+        this.modePanel = new Panel();
+        this.filePanel = new Panel();
         
         this.SuspendLayout();
         
@@ -102,9 +108,10 @@ partial class Form1
         this.sizePanel.Location = new Point(475, 10);
         this.sizePanel.Size = new Size(450, 90);
         
+        // отображение пикселей
         this.sizeLbl.Text = $"{_penWidth}px";
         this.sizeLbl.Location = new Point(350, 15);
-        this.sizeLbl.Size = new Size(50, 25);
+        this.sizeLbl.Size = new Size(75, 25);
         this.sizePanel.Controls.Add(sizeLbl);
         
         // кнопки
@@ -128,24 +135,38 @@ partial class Form1
         this.sizeBar.Minimum = 0;
         this.sizeBar.Maximum = 300;
         this.sizeBar.ValueChanged += ChangeWidthBar;
+        this.sizeBar.Cursor = Cursors.Hand;
         this.sizePanel.Controls.Add(sizeBar);
         
         
+        // сектор выбора режима кисти и очистки экрана
+        this.modePanel.BackColor = Color.White;
+        this.modePanel.Location = new Point(940, 10);
+        this.modePanel.Size = new Size(190, 90);
+        
+        
+        // сектор сохранения/открытия файла
+        this.filePanel.BackColor = Color.White;
+        this.filePanel.Location = new Point(1140, 10);
+        this.filePanel.Size = new Size(100, 90);
+        
+        
         // главное окно для рисования
-        this.mainPcBx.Size = new Size(1180, 680);
+        this.mainPcBx.Size = new Size(1230, 680);
         this.mainPcBx.Location = new Point(10, 110);
         this.mainPcBx.BackColor = Color.White;
         this.mainPcBx.Cursor = Cursors.Cross;
         
         this.Controls.AddRange(new System.Windows.Forms.Control[]
         {
-            this.mainPcBx, this.colorPanel, this.sizePanel
+            this.mainPcBx,
+            this.colorPanel, this.sizePanel, this.modePanel, this.filePanel
         });
         
         // редакция главного окна
         this.components = new System.ComponentModel.Container();
         this.AutoScaleMode = AutoScaleMode.Font;
-        this.ClientSize = new Size(1200, 800);
+        this.ClientSize = new Size(1250, 800);
         this.Text = "UPA";
         this.BackColor = Color.AntiqueWhite;
         this.FormBorderStyle = FormBorderStyle.FixedSingle;
