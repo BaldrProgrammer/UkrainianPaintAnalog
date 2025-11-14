@@ -57,13 +57,14 @@ public partial class Form1 : Form
             _penWidth = float.Parse(senderr.Text.Replace("px", ""));
             Console.WriteLine(_penWidth);
         }
-        colorShower.BackColor =  _penColor;
-        colorShower.Invalidate();
+        sizeLbl.Text =  $"{_penWidth}px";
+        sizeBar.Value = (int)_penWidth * 10;
     }
 
     private void ChangeWidthBar(object sender, EventArgs e)
     {
         _penWidth = Convert.ToInt32(sizeBar.Value) / 10f;
+        sizeLbl.Text =  $"{_penWidth}px";
     }
 
     private void FillPixel(int x, int y)

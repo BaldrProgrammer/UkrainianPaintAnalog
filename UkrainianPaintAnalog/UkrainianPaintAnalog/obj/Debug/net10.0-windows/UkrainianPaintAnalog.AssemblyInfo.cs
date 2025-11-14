@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UkrainianPaintAnalog")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+808fca189968270fc45edea924de9638975eccb0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd2d877526bbc6ff995d3ad8bbb1b1ccd0e440f5")]
 [assembly: System.Reflection.AssemblyProductAttribute("UkrainianPaintAnalog")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UkrainianPaintAnalog")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

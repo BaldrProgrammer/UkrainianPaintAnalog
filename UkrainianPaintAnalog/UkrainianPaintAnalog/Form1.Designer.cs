@@ -102,6 +102,11 @@ partial class Form1
         this.sizePanel.Location = new Point(475, 10);
         this.sizePanel.Size = new Size(450, 90);
         
+        this.sizeLbl.Text = $"{_penWidth}px";
+        this.sizeLbl.Location = new Point(350, 10);
+        this.sizeLbl.Size = new Size(50, 25);
+        this.sizePanel.Controls.Add(sizeLbl);
+        
         // кнопки
         int startXfs = 75;
         int diffrencefs = 50;
