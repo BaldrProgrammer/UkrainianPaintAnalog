@@ -6,6 +6,7 @@ partial class Form1
     private System.ComponentModel.IContainer components = null;
     private System.Windows.Forms.PictureBox mainPcBx;
     private System.Windows.Forms.Panel colorPanel;
+    private System.Windows.Forms.Button colorBtn;
 
     protected override void Dispose(bool disposing)
     {
@@ -28,21 +29,38 @@ partial class Form1
         // сектор выбора цвета кисти
         List<string> colors = new List<string>()
         {
-            "000000", "FFFFFF", // черно-белый
-            "999999", "CCCCCC", // серый
-            "880000", "794949", // бордовый
-            "FF0000", "FF9999", // красный
-            "FF8800", "FFBB77", // оранжевый
-            "FFFF00", "FFFF77", // желтый
-            "00FF00", "99FF99", // зеленый
-            "00FFFF", "99FFFF", // голубой
-            "0000FF", "9999FF", // синий
-            "BB00FF", "eebbff", // фиолетовый
+            // яркие версии
+            "000000", "999999", "880000", "FF0000", "FF8800",
+            "FFFF00", "00FF00", "00FFFF", "0000FF", "BB00FF",
+            // тусклые версии
+            "FFFFFF", "CCCCCC", "794949", "FF9999", "FFBB77",
+            "FFFF77", "99FF99", "99FFFF", "9999FF", "eebbff"
         };
         
+        // панель
         this.colorPanel.BackColor = Color.White;
         this.colorPanel.Location = new Point(10, 10);
-        this.colorPanel.Size = new Size(250, 130);
+        this.colorPanel.Size = new Size(750, 130);
+
+        // кнопки
+        int startX = 10;
+        int diffrence = 30;
+        for (int i = 0; i < colors.Count; i++)
+        {
+            this.colorBtn = new Button();
+            if (i > 9)
+            {
+                this.colorBtn.Location = new Point(startX, 10);
+            }
+            else
+            {
+                this.colorBtn.Location = new Point(startX, 40);
+            }
+            this.colorBtn.BackColor = ColorTranslator.FromHtml("#" + colors[i]);
+            this.colorBtn.Size = new Size(25, 25);
+            colorPanel.Controls.Add(this.colorBtn);
+            startX += diffrence;
+        }
         
         // главное окно для рисования
         this.mainPcBx.Size = new Size(1180, 640);

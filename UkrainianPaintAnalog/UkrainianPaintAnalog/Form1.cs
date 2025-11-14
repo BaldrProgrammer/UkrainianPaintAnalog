@@ -20,6 +20,8 @@ public partial class Form1 : Form
 
     private void FillPixel(int x, int y)
     {
+        penWidth = 2;
+        
         if (mainPcBx.Image == null)
         {
             mainPcBx.Image = new Bitmap(ClientSize.Width, ClientSize.Height);
@@ -30,11 +32,11 @@ public partial class Form1 : Form
             Console.WriteLine(isPressed);
             if (isPressed == false)
             {
-                g.FillRectangle(Brushes.Black, x-10, y-150, 1, 1);
+                g.FillRectangle(Brushes.Black, x-10, y-150, penWidth, 1);
             }
             else
             {
-                g.DrawLine(new Pen(Color.Black, 5), new Point(pastPos.X-10, pastPos.Y-150), new Point(x-10, y-150));
+                g.DrawLine(new Pen(Color.Black, penWidth), new Point(pastPos.X-10, pastPos.Y-150), new Point(x-10, y-150));
             }
         }
         
