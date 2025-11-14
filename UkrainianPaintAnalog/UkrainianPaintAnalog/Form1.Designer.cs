@@ -12,7 +12,9 @@ partial class Form1
     private System.Windows.Forms.PictureBox colorShower;
 
     private System.Windows.Forms.Panel sizePanel;
+    private System.Windows.Forms.Label sizeLbl;
     private System.Windows.Forms.Button sizeBtn;
+    private System.Windows.Forms.TrackBar sizeBar;
 
     protected override void Dispose(bool disposing)
     {
@@ -28,10 +30,12 @@ partial class Form1
     {
         // создание виджетов
         this.colorPanel = new Panel();
-        this.sizePanel = new Panel();
         this.mainPcBx = new PictureBox();
         this.colorPicker = new PictureBox();
         this.colorShower = new PictureBox();
+        this.sizePanel = new Panel();
+        this.sizeLbl = new Label();
+        this.sizeBar = new TrackBar();
         
         this.SuspendLayout();
         
@@ -112,6 +116,14 @@ partial class Form1
             this.sizePanel.Controls.Add(this.sizeBtn);
             startXfs += diffrencefs;
         }
+        
+        // сайдбар
+        this.sizeBar.Location = new Point(25, 45);
+        this.sizeBar.Size = new Size(400, 25);
+        this.sizeBar.Minimum = 0;
+        this.sizeBar.Maximum = 150;
+        this.sizeBar.ValueChanged += ChangeWidthBar;
+        this.sizePanel.Controls.Add(sizeBar);
         
         
         // главное окно для рисования

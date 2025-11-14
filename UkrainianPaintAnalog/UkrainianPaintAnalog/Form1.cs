@@ -11,7 +11,7 @@ public partial class Form1 : Form
     
     // данные кисти
     private Color _penColor = Color.Black;
-    private int _penWidth = 1;
+    private float _penWidth = 1.0f;
     
     public Form1()
     {
@@ -54,17 +54,20 @@ public partial class Form1 : Form
         Button? senderr = sender as Button;
         if (senderr != null)
         {
-            _penWidth = Convert.ToInt32(senderr.Text.Replace("px", ""));
+            _penWidth = float.Parse(senderr.Text.Replace("px", ""));
             Console.WriteLine(_penWidth);
         }
         colorShower.BackColor =  _penColor;
         colorShower.Invalidate();
     }
 
+    private void ChangeWidthBar(object sender, EventArgs e)
+    {
+        _penWidth = Convert.ToInt32(sizeBar.Value) / 10f;
+    }
+
     private void FillPixel(int x, int y)
     {
-        _penWidth = 2;
-        
         if (mainPcBx.Image == null)
         {
             mainPcBx.Image = new Bitmap(ClientSize.Width, ClientSize.Height);
@@ -77,10 +80,7 @@ public partial class Form1 : Form
                 Console.WriteLine(_isPressed);
                 if (_isPressed == false)
                 {
-                    using (SolidBrush brush = new SolidBrush(_penColor))
-                    {
-                        g.FillRectangle(brush, x-10, y-110, _penWidth, 1);
-                    }
+                    g.DrawEllipse(new Pen(_penColor, _penWidth), x-10, y-110, _penWidth, _penWidth);
                 }
                 else
                 {
