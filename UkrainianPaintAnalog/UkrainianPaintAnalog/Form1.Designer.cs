@@ -50,6 +50,7 @@ partial class Form1
         this.colorPicker.SizeMode = PictureBoxSizeMode.StretchImage;
         this.colorPicker.Location = new Point(15, 20);
         this.colorPicker.Size = new Size(45, 45);
+        this.colorPicker.Click += ChangeColorDialog;
         this.colorPanel.Controls.Add(this.colorPicker);
         
         // кнопки

@@ -18,9 +18,19 @@ public partial class Form1 : Form
         InitializeComponent();
     }
 
-    private void ChangeColor(object sender, EventArgs e)
+    private void ChangeColorDialog(object sender, EventArgs e)
     {
-        
+        PictureBox senderr = sender as PictureBox;
+        if (senderr != null)
+        {
+            using (ColorDialog cd = new ColorDialog())
+            {
+                if (cd.ShowDialog() == DialogResult.OK)
+                {
+                    penColor = cd.Color;
+                }
+            }
+        }
     }
 
     private void FillPixel(int x, int y)
@@ -37,11 +47,14 @@ public partial class Form1 : Form
             Console.WriteLine(isPressed);
             if (isPressed == false)
             {
-                g.FillRectangle(Brushes.Black, x-10, y-150, penWidth, 1);
+                using (SolidBrush brush = new SolidBrush(penColor))
+                {
+                    g.FillRectangle(brush, x-10, y-150, penWidth, 1);
+                }
             }
             else
             {
-                g.DrawLine(new Pen(Color.Black, penWidth), new Point(pastPos.X-10, pastPos.Y-150), new Point(x-10, y-150));
+                g.DrawLine(new Pen(penColor, penWidth), new Point(pastPos.X-10, pastPos.Y-150), new Point(x-10, y-150));
             }
         }
         
