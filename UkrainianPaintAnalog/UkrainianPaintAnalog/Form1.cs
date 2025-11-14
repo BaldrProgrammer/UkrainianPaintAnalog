@@ -11,7 +11,7 @@ public partial class Form1 : Form
     
     // данные кисти
     private Color _penColor = Color.Black;
-    private float _penWidth = 1.0f;
+    private float _penWidth = 2.0f;
     
     public Form1()
     {

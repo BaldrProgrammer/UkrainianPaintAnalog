@@ -19,6 +19,9 @@ partial class Form1
     private System.Windows.Forms.Panel modePanel;
     
     private System.Windows.Forms.Panel filePanel;
+    private System.Windows.Forms.Button saveBtn;
+    private System.Windows.Forms.Button saveasBtn;
+    private System.Windows.Forms.Button openBtn;
 
     protected override void Dispose(bool disposing)
     {
@@ -35,13 +38,20 @@ partial class Form1
         // создание виджетов
         this.colorPanel = new Panel();
         this.mainPcBx = new PictureBox();
+        
         this.colorPicker = new PictureBox();
         this.colorShower = new PictureBox();
+        
         this.sizePanel = new Panel();
         this.sizeLbl = new Label();
         this.sizeBar = new TrackBar();
+        
         this.modePanel = new Panel();
+        
         this.filePanel = new Panel();
+        this.saveBtn = new Button();
+        this.saveasBtn = new Button();
+        this.openBtn = new Button();
         
         this.SuspendLayout();
         
@@ -134,6 +144,7 @@ partial class Form1
         this.sizeBar.Size = new Size(400, 25);
         this.sizeBar.Minimum = 0;
         this.sizeBar.Maximum = 300;
+        this.sizeBar.Value = 20;
         this.sizeBar.ValueChanged += ChangeWidthBar;
         this.sizeBar.Cursor = Cursors.Hand;
         this.sizePanel.Controls.Add(sizeBar);
@@ -142,13 +153,37 @@ partial class Form1
         // сектор выбора режима кисти и очистки экрана
         this.modePanel.BackColor = Color.White;
         this.modePanel.Location = new Point(940, 10);
-        this.modePanel.Size = new Size(190, 90);
+        this.modePanel.Size = new Size(160, 90);
         
         
         // сектор сохранения/открытия файла
         this.filePanel.BackColor = Color.White;
-        this.filePanel.Location = new Point(1140, 10);
-        this.filePanel.Size = new Size(100, 90);
+        this.filePanel.Location = new Point(1110, 10);
+        this.filePanel.Size = new Size(130, 90);
+        
+        // сохранить
+        this.saveBtn.Text = "Сохранить";
+        this.saveBtn.Font = new Font("Arial", 6.5f);
+        this.saveBtn.Location = new Point(10, 10);
+        this.saveBtn.Size = new Size(110, 20);
+        this.saveBtn.Cursor = Cursors.Hand;
+        this.filePanel.Controls.Add(saveBtn);
+        
+        // сохранить как
+        this.saveasBtn.Text = "Сохранить как";
+        this.saveasBtn.Font = new Font("Arial", 6.5f);
+        this.saveasBtn.Location = new Point(10, 35);
+        this.saveasBtn.Size = new Size(110, 20);
+        this.saveasBtn.Cursor = Cursors.Hand;
+        this.filePanel.Controls.Add(saveasBtn);
+        
+        // открыть
+        this.openBtn.Text = "Открыть";
+        this.openBtn.Font = new Font("Arial", 6.5f);
+        this.openBtn.Location = new Point(10, 60);
+        this.openBtn.Size = new Size(110, 20);
+        this.openBtn.Cursor = Cursors.Hand;
+        this.filePanel.Controls.Add(openBtn);
         
         
         // главное окно для рисования
