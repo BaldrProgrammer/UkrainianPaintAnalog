@@ -185,6 +185,7 @@ partial class Form1
         this.openBtn.Location = new Point(10, 60);
         this.openBtn.Size = new Size(110, 20);
         this.openBtn.Cursor = Cursors.Hand;
+        this.openBtn.MouseClick += Open;
         this.filePanel.Controls.Add(openBtn);
         
         

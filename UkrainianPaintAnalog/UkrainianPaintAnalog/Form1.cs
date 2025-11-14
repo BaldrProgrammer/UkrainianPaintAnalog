@@ -106,6 +106,19 @@ public partial class Form1 : Form
         
     }
 
+    private void Open(object sender, EventArgs e)
+    {
+        using (OpenFileDialog ofd = new OpenFileDialog())
+        {
+            ofd.Filter = "JPEG Image|*.jpg;*.jpeg;*.png";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                mainPcBx.Image = new Bitmap(Image.FromFile(ofd.FileName));
+            }
+        }
+        mainPcBx.Invalidate();
+    }
+
     private void FillPixel(int x, int y)
     {
         lock (_bmpLock)
