@@ -7,8 +7,8 @@ public partial class Form1 : Form
     private bool isPressed;
     
     // данные кисти
-    private Color penColor;
-    private int penWidth;
+    private Color penColor = Color.Black;
+    private int penWidth = 1;
     
     public Form1()
     {
@@ -31,6 +31,8 @@ public partial class Form1 : Form
                 }
             }
         }
+        colorShower.BackColor =  penColor;
+        colorShower.Invalidate();
     }
 
     private void FillPixel(int x, int y)
@@ -49,12 +51,12 @@ public partial class Form1 : Form
             {
                 using (SolidBrush brush = new SolidBrush(penColor))
                 {
-                    g.FillRectangle(brush, x-10, y-150, penWidth, 1);
+                    g.FillRectangle(brush, x-10, y-110, penWidth, 1);
                 }
             }
             else
             {
-                g.DrawLine(new Pen(penColor, penWidth), new Point(pastPos.X-10, pastPos.Y-150), new Point(x-10, y-150));
+                g.DrawLine(new Pen(penColor, penWidth), new Point(pastPos.X-10, pastPos.Y-110), new Point(x-10, y-110));
             }
         }
         

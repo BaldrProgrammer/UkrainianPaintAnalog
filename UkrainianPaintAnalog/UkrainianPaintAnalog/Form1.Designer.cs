@@ -8,6 +8,7 @@ partial class Form1
     private System.Windows.Forms.Panel colorPanel;
     private System.Windows.Forms.Button colorBtn;
     private System.Windows.Forms.PictureBox colorPicker;
+    private System.Windows.Forms.PictureBox colorShower;
 
     protected override void Dispose(bool disposing)
     {
@@ -25,6 +26,7 @@ partial class Form1
         this.colorPanel = new Panel();
         this.mainPcBx = new PictureBox();
         this.colorPicker = new PictureBox();
+        this.colorShower = new PictureBox();
         
         this.SuspendLayout();
         
@@ -50,6 +52,7 @@ partial class Form1
         this.colorPicker.SizeMode = PictureBoxSizeMode.StretchImage;
         this.colorPicker.Location = new Point(15, 20);
         this.colorPicker.Size = new Size(45, 45);
+        this.colorPicker.Cursor = Cursors.Hand;
         this.colorPicker.Click += ChangeColorDialog;
         this.colorPanel.Controls.Add(this.colorPicker);
         
@@ -68,14 +71,22 @@ partial class Form1
             this.colorBtn.Location = new Point(startX, buttonsY);
             this.colorBtn.BackColor = ColorTranslator.FromHtml("#" + colors[i]);
             this.colorBtn.Size = new Size(25, 25);
+            this.colorBtn.Cursor = Cursors.Hand;
             colorPanel.Controls.Add(this.colorBtn);
             startX += diffrence;
         }
+        
+        // показать цвет
+        this.colorShower.Location = new Point(400, 30);
+        this.colorShower.Size = new Size(30, 30);
+        this.colorShower.BackColor = this.penColor;
+        this.colorPanel.Controls.Add(this.colorShower);
         
         // главное окно для рисования
         this.mainPcBx.Size = new Size(1180, 680);
         this.mainPcBx.Location = new Point(10, 110);
         this.mainPcBx.BackColor = Color.White;
+        this.mainPcBx.Cursor = Cursors.Cross;
         
         this.Controls.AddRange(new System.Windows.Forms.Control[]
         {
