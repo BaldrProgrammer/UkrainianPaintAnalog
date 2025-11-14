@@ -13,6 +13,9 @@ public partial class Form1 : Form
     private Color _penColor = Color.Black;
     private float _penWidth = 2.0f;
     
+    // куда сохранять файл
+    private string filePath;
+    
     public Form1()
     {
         Thread cursorSpi = new Thread(SpiCursor);
@@ -65,6 +68,15 @@ public partial class Form1 : Form
     {
         _penWidth = Convert.ToInt32(sizeBar.Value) / 10f;
         sizeLbl.Text =  $"{_penWidth}px";
+    }
+
+    private void Save(object sender, EventArgs e)
+    {
+        filePath = @"C:\Users\Public\image.jpeg";
+        lock (_bmpLock)
+        {
+            mainPcBx.Image.Save(filePath, System.Drawing.Imaging.ImageFormat.Jpeg);
+        }
     }
 
     private void FillPixel(int x, int y)

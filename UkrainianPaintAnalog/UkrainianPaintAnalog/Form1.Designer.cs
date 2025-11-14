@@ -167,6 +167,7 @@ partial class Form1
         this.saveBtn.Location = new Point(10, 10);
         this.saveBtn.Size = new Size(110, 20);
         this.saveBtn.Cursor = Cursors.Hand;
+        this.saveBtn.MouseClick += Save;
         this.filePanel.Controls.Add(saveBtn);
         
         // сохранить как
