@@ -97,13 +97,14 @@ public partial class Form1 : Form
     {
         while (true)
         {
+            Thread.Sleep(10);
             if (MouseButtons == MouseButtons.Left && ActiveForm == this)
             {
                 Point pos = PointToClient(Cursor.Position);
                 if (pos.X <= ClientSize.Width && pos.Y <= ClientSize.Height && pos.X >= 10 && pos.Y >= 110)
                 {
-                    FillPixel(pos.X, pos.Y);
-                    SpinWait.SpinUntil(() => false, 1);
+                    Invoke((Action)(() => FillPixel(pos.X, pos.Y))); // здесь проблема с вылетами была, я поставил инвок для запуска в UI-потоке
+
                     if (pos.X != _pastPos.X || pos.Y != _pastPos.Y)
                     {
                         _isPressed = true;

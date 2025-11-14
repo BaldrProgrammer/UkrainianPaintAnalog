@@ -103,7 +103,7 @@ partial class Form1
         this.sizePanel.Size = new Size(450, 90);
         
         this.sizeLbl.Text = $"{_penWidth}px";
-        this.sizeLbl.Location = new Point(350, 10);
+        this.sizeLbl.Location = new Point(350, 15);
         this.sizeLbl.Size = new Size(50, 25);
         this.sizePanel.Controls.Add(sizeLbl);
         
@@ -126,7 +126,7 @@ partial class Form1
         this.sizeBar.Location = new Point(25, 45);
         this.sizeBar.Size = new Size(400, 25);
         this.sizeBar.Minimum = 0;
-        this.sizeBar.Maximum = 150;
+        this.sizeBar.Maximum = 300;
         this.sizeBar.ValueChanged += ChangeWidthBar;
         this.sizePanel.Controls.Add(sizeBar);
         
