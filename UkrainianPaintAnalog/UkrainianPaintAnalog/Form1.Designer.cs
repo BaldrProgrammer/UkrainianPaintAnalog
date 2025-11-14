@@ -72,14 +72,15 @@ partial class Form1
             this.colorBtn.BackColor = ColorTranslator.FromHtml("#" + colors[i]);
             this.colorBtn.Size = new Size(25, 25);
             this.colorBtn.Cursor = Cursors.Hand;
-            colorPanel.Controls.Add(this.colorBtn);
+            this.colorBtn.MouseClick += this.ChangeColor;
+            this.colorPanel.Controls.Add(this.colorBtn);
             startX += diffrence;
         }
         
         // показать цвет
         this.colorShower.Location = new Point(400, 30);
         this.colorShower.Size = new Size(30, 30);
-        this.colorShower.BackColor = this.penColor;
+        this.colorShower.BackColor = this._penColor;
         this.colorPanel.Controls.Add(this.colorShower);
         
         // главное окно для рисования
