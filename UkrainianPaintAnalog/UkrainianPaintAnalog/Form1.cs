@@ -22,6 +22,10 @@ public partial class Form1 : Form
         cursorSpi.IsBackground = true;
         cursorSpi.Start();
         InitializeComponent();
+        using (Graphics g = Graphics.FromImage(mainPcBx.Image))
+        {
+            g.Clear(Color.White);
+        }
     }
 
     private void ChangeColor(object sender, EventArgs e)
@@ -81,11 +85,6 @@ public partial class Form1 : Form
 
     private void FillPixel(int x, int y)
     {
-        if (mainPcBx.Image == null)
-        {
-            mainPcBx.Image = new Bitmap(ClientSize.Width, ClientSize.Height);
-        }
-
         lock (_bmpLock)
         {
             using (Graphics g = Graphics.FromImage(mainPcBx.Image))

@@ -192,6 +192,7 @@ partial class Form1
         this.mainPcBx.Location = new Point(10, 110);
         this.mainPcBx.BackColor = Color.White;
         this.mainPcBx.Cursor = Cursors.Cross;
+        this.mainPcBx.Image = new Bitmap(1230, 680);
         
         this.Controls.AddRange(new System.Windows.Forms.Control[]
         {
