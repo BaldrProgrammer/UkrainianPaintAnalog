@@ -159,14 +159,14 @@ partial class Form1
         // сектор выбора режима кисти и очистки экрана
         this.modePanel.BackColor = Color.White;
         this.modePanel.Location = new Point(940, 10);
-        this.modePanel.Size = new Size(160, 90);
+        this.modePanel.Size = new Size(130, 90);
 
         // кнопка на переключение в кисть
         string brushPath = Path.Combine(Application.StartupPath, "sysmedia", "kist.png");
         this.brushBtn.Image = Image.FromFile(brushPath);
         this.brushBtn.SizeMode = PictureBoxSizeMode.StretchImage;
-        this.brushBtn.Location = new Point(0, 0);
-        this.brushBtn.Size = new Size(45, 45);
+        this.brushBtn.Location = new Point(5, 5);
+        this.brushBtn.Size = new Size(40, 40);
         this.brushBtn.Cursor = Cursors.Hand;
         this.modePanel.Controls.Add(brushBtn);
         
@@ -174,15 +174,24 @@ partial class Form1
         string eraserPath = Path.Combine(Application.StartupPath, "sysmedia", "zatiraczka.png");
         this.eraserBtn.Image = Image.FromFile(eraserPath);
         this.eraserBtn.SizeMode = PictureBoxSizeMode.StretchImage;
-        this.eraserBtn.Location = new Point(0, 45);
-        this.eraserBtn.Size = new Size(45, 45);
+        this.eraserBtn.Location = new Point(5, 45);
+        this.eraserBtn.Size = new Size(40, 40);
         this.eraserBtn.Cursor = Cursors.Hand;
         this.modePanel.Controls.Add(eraserBtn);
+        
+        // кнопка на переключение в затирачку
+        string trashPath = Path.Combine(Application.StartupPath, "sysmedia", "musorka.png");
+        this.trashBtn.Image = Image.FromFile(trashPath);
+        this.trashBtn.SizeMode = PictureBoxSizeMode.StretchImage;
+        this.trashBtn.Location = new Point(55, 10);
+        this.trashBtn.Size = new Size(70, 70);
+        this.trashBtn.Cursor = Cursors.Hand;
+        this.modePanel.Controls.Add(trashBtn);
         
         
         // сектор сохранения/открытия файла
         this.filePanel.BackColor = Color.White;
-        this.filePanel.Location = new Point(1110, 10);
+        this.filePanel.Location = new Point(1080, 10);
         this.filePanel.Size = new Size(130, 90);
         
         // сохранить
@@ -214,11 +223,11 @@ partial class Form1
         
         
         // главное окно для рисования
-        this.mainPcBx.Size = new Size(1230, 680);
+        this.mainPcBx.Size = new Size(1200, 680);
         this.mainPcBx.Location = new Point(10, 110);
         this.mainPcBx.BackColor = Color.White;
         this.mainPcBx.Cursor = Cursors.Cross;
-        this.mainPcBx.Image = new Bitmap(1230, 680);
+        this.mainPcBx.Image = new Bitmap(1230, 650);
         
         this.Controls.AddRange(new System.Windows.Forms.Control[]
         {
@@ -229,7 +238,7 @@ partial class Form1
         // редакция главного окна
         this.components = new System.ComponentModel.Container();
         this.AutoScaleMode = AutoScaleMode.Font;
-        this.ClientSize = new Size(1250, 800);
+        this.ClientSize = new Size(1220, 800);
         this.Text = "UPA";
         this.BackColor = Color.AntiqueWhite;
         this.FormBorderStyle = FormBorderStyle.FixedSingle;
