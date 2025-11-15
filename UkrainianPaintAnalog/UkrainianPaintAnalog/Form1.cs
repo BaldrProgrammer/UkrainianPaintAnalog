@@ -12,6 +12,7 @@ public partial class Form1 : Form
     // данные кисти
     private Color _penColor = Color.Black;
     private float _penWidth = 2.0f;
+    private string _brushType = "brush";
     
     // куда сохранять файл
     private string? _filePath;
@@ -88,6 +89,7 @@ public partial class Form1 : Form
             SaveAs(null, null);
         }
     }
+    
     private void SaveAs(object? sender, EventArgs? e)
     {
         lock (_bmpLock) 

@@ -17,6 +17,9 @@ partial class Form1
     private System.Windows.Forms.TrackBar sizeBar;
 
     private System.Windows.Forms.Panel modePanel;
+    private System.Windows.Forms.PictureBox brushBtn;
+    private System.Windows.Forms.PictureBox eraserBtn;
+    private System.Windows.Forms.PictureBox trashBtn;
     
     private System.Windows.Forms.Panel filePanel;
     private System.Windows.Forms.Button saveBtn;
@@ -47,6 +50,9 @@ partial class Form1
         this.sizeBar = new TrackBar();
         
         this.modePanel = new Panel();
+        this.brushBtn = new PictureBox();
+        this.eraserBtn = new PictureBox();
+        this.trashBtn = new PictureBox();
         
         this.filePanel = new Panel();
         this.saveBtn = new Button();
@@ -154,6 +160,24 @@ partial class Form1
         this.modePanel.BackColor = Color.White;
         this.modePanel.Location = new Point(940, 10);
         this.modePanel.Size = new Size(160, 90);
+
+        // кнопка на переключение в кисть
+        string brushPath = Path.Combine(Application.StartupPath, "sysmedia", "kist.png");
+        this.brushBtn.Image = Image.FromFile(brushPath);
+        this.brushBtn.SizeMode = PictureBoxSizeMode.StretchImage;
+        this.brushBtn.Location = new Point(0, 0);
+        this.brushBtn.Size = new Size(45, 45);
+        this.brushBtn.Cursor = Cursors.Hand;
+        this.modePanel.Controls.Add(brushBtn);
+        
+        // кнопка на переключение в затирачку
+        string eraserPath = Path.Combine(Application.StartupPath, "sysmedia", "zatiraczka.png");
+        this.eraserBtn.Image = Image.FromFile(eraserPath);
+        this.eraserBtn.SizeMode = PictureBoxSizeMode.StretchImage;
+        this.eraserBtn.Location = new Point(0, 45);
+        this.eraserBtn.Size = new Size(45, 45);
+        this.eraserBtn.Cursor = Cursors.Hand;
+        this.modePanel.Controls.Add(eraserBtn);
         
         
         // сектор сохранения/открытия файла
