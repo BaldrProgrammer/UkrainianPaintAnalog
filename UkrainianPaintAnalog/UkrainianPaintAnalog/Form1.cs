@@ -11,6 +11,7 @@ public partial class Form1 : Form
     
     // данные кисти
     private Color _penColor = Color.Black;
+    private Color _pastPenColor = Color.Black;
     private float _penWidth = 2.0f;
     private string _brushType = "brush";
     
@@ -23,9 +24,12 @@ public partial class Form1 : Form
         cursorSpi.IsBackground = true;
         cursorSpi.Start();
         InitializeComponent();
-        using (Graphics g = Graphics.FromImage(mainPcBx.Image))
+        if (mainPcBx.Image != null)
         {
-            g.Clear(Color.White);
+            using (Graphics g = Graphics.FromImage(mainPcBx.Image))
+            {
+                g.Clear(Color.White);
+            }
         }
     }
 
@@ -34,7 +38,7 @@ public partial class Form1 : Form
         Button? senderr = sender as Button;
         if (senderr != null)
         {
-            _penColor =  senderr.BackColor;
+            _penColor = _pastPenColor =  senderr.BackColor;
         }
         colorShower.BackColor =  _penColor;
         colorShower.Invalidate();
@@ -49,7 +53,7 @@ public partial class Form1 : Form
             {
                 if (cd.ShowDialog() == DialogResult.OK)
                 {
-                    _penColor = cd.Color;
+                    _penColor = _pastPenColor = cd.Color;
                 }
             }
         }
@@ -77,7 +81,7 @@ public partial class Form1 : Form
 
     private void Save(object sender, EventArgs e)
     {
-        if (_filePath != null)
+        if (_filePath != null && mainPcBx.Image != null)
         {
             lock (_bmpLock)
             {
@@ -94,14 +98,17 @@ public partial class Form1 : Form
     {
         lock (_bmpLock) 
         {
-            using (SaveFileDialog fd = new SaveFileDialog())
+            if (mainPcBx.Image != null)
             {
-                fd.Filter = "JPEG Image|*.jpg;*.jpeg|PNG Image|*.png";
-                _filePath = fd.FileName;
-                if (fd.ShowDialog() == DialogResult.OK)
+                using (SaveFileDialog fd = new SaveFileDialog())
                 {
+                    fd.Filter = "JPEG Image|*.jpg;*.jpeg|PNG Image|*.png";
                     _filePath = fd.FileName;
-                    mainPcBx.Image.Save(_filePath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    if (fd.ShowDialog() == DialogResult.OK)
+                    {
+                        _filePath = fd.FileName;
+                        mainPcBx.Image.Save(_filePath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    }
                 }
             }
         }
@@ -121,9 +128,9 @@ public partial class Form1 : Form
         mainPcBx.Invalidate();
     }
 
-    private void brusheraserChange(object sender, EventArgs e)
+    private void BrushEraserChange(object sender, EventArgs e)
     {
-        PictureBox senderr = sender as PictureBox;
+        PictureBox? senderr = sender as PictureBox;
         _brushType = senderr.Tag as string;
         Console.WriteLine(_brushType);
     }
@@ -136,11 +143,15 @@ public partial class Form1 : Form
                 "Точно-Точноо!??", MessageBoxButtons.YesNo);
         if (dialogresult == DialogResult.Yes)
         {
-            using (Graphics g = Graphics.FromImage(mainPcBx.Image))
+            if (mainPcBx.Image != null)
             {
-                g.Clear(Color.White);
+                using (Graphics g = Graphics.FromImage(mainPcBx.Image))
+                {
+                    g.Clear(Color.White);
+                }
+
+                mainPcBx.Invalidate();
             }
-            mainPcBx.Invalidate();
         }
     }
 
@@ -148,31 +159,24 @@ public partial class Form1 : Form
     {
         lock (_bmpLock)
         {
-            using (Graphics g = Graphics.FromImage(mainPcBx.Image))
+            if (mainPcBx.Image != null)
             {
-                if (_isPressed == false)
+                using (Graphics g = Graphics.FromImage(mainPcBx.Image))
                 {
-                    if (_brushType == "brush")
+                    if (_brushType == "eraser")
                     {
-                        g.DrawEllipse(new Pen(_penColor, _penWidth), x - 10, y - 110, _penWidth, _penWidth);
+                        _pastPenColor = _penColor;
+                        _penColor = Color.White;
                     }
-                    else if (_brushType == "eraser")
+                    if (_isPressed == false)
                     {
-                        g.DrawEllipse(new Pen(Color.White, _penWidth), x - 10, y - 110, _penWidth, _penWidth);
+                        g.DrawEllipse(new Pen(_penColor, _penWidth), x-10, y-110, _penWidth, _penWidth);
                     }
-                }
-                else
-                {
-                    if (_brushType == "brush")
+                    else
                     {
-                        g.DrawLine(new Pen(_penColor, _penWidth), new Point(_pastPos.X - 10, _pastPos.Y - 110),
-                            new Point(x - 10, y - 110));
+                        g.DrawLine(new Pen(_penColor, _penWidth), new Point(_pastPos.X-10, _pastPos.Y-110), new Point(x-10, y-110));
                     }
-                    else if (_brushType == "eraser")
-                    {
-                        g.DrawLine(new Pen(Color.White, _penWidth), new Point(_pastPos.X - 10, _pastPos.Y - 110),
-                            new Point(x - 10, y - 110));
-                    }
+                    _penColor = _pastPenColor;
                 }
             }
         }
