@@ -121,6 +121,13 @@ public partial class Form1 : Form
         mainPcBx.Invalidate();
     }
 
+    private void brusheraserChange(object sender, EventArgs e)
+    {
+        PictureBox senderr = sender as PictureBox;
+        _brushType = senderr.Tag as string;
+        Console.WriteLine(_brushType);
+    }
+
     private void ClearHolst(object sender, EventArgs e)
     {
         DialogResult dialogresult =

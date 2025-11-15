@@ -168,6 +168,8 @@ partial class Form1
         this.brushBtn.Location = new Point(5, 5);
         this.brushBtn.Size = new Size(40, 40);
         this.brushBtn.Cursor = Cursors.Hand;
+        this.brushBtn.Tag = "brush";
+        this.brushBtn.Click += brusheraserChange;
         this.modePanel.Controls.Add(brushBtn);
         
         // кнопка на переключение в затирачку
@@ -177,6 +179,8 @@ partial class Form1
         this.eraserBtn.Location = new Point(5, 45);
         this.eraserBtn.Size = new Size(40, 40);
         this.eraserBtn.Cursor = Cursors.Hand;
+        this.eraserBtn.Tag = "eraser";
+        this.eraserBtn.Click += brusheraserChange;
         this.modePanel.Controls.Add(eraserBtn);
         
         // кнопка на очищение холста
