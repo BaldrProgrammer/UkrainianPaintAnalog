@@ -150,14 +150,29 @@ public partial class Form1 : Form
         {
             using (Graphics g = Graphics.FromImage(mainPcBx.Image))
             {
-                Console.WriteLine(_isPressed);
                 if (_isPressed == false)
                 {
-                    g.DrawEllipse(new Pen(_penColor, _penWidth), x-10, y-110, _penWidth, _penWidth);
+                    if (_brushType == "brush")
+                    {
+                        g.DrawEllipse(new Pen(_penColor, _penWidth), x - 10, y - 110, _penWidth, _penWidth);
+                    }
+                    else if (_brushType == "eraser")
+                    {
+                        g.DrawEllipse(new Pen(Color.White, _penWidth), x - 10, y - 110, _penWidth, _penWidth);
+                    }
                 }
                 else
                 {
-                    g.DrawLine(new Pen(_penColor, _penWidth), new Point(_pastPos.X-10, _pastPos.Y-110), new Point(x-10, y-110));
+                    if (_brushType == "brush")
+                    {
+                        g.DrawLine(new Pen(_penColor, _penWidth), new Point(_pastPos.X - 10, _pastPos.Y - 110),
+                            new Point(x - 10, y - 110));
+                    }
+                    else if (_brushType == "eraser")
+                    {
+                        g.DrawLine(new Pen(Color.White, _penWidth), new Point(_pastPos.X - 10, _pastPos.Y - 110),
+                            new Point(x - 10, y - 110));
+                    }
                 }
             }
         }
