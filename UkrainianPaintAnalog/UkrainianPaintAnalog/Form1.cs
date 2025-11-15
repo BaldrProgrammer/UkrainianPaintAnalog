@@ -121,6 +121,22 @@ public partial class Form1 : Form
         mainPcBx.Invalidate();
     }
 
+    private void ClearHolst(object sender, EventArgs e)
+    {
+        DialogResult dialogresult =
+            MessageBox.Show(
+                "Вы прям на миллиард в третьей степени процентов полны решимостью стереть к чертям ваш шедевральный шедевр современного исскуства???????",
+                "Точно-Точноо!??", MessageBoxButtons.YesNo);
+        if (dialogresult == DialogResult.Yes)
+        {
+            using (Graphics g = Graphics.FromImage(mainPcBx.Image))
+            {
+                g.Clear(Color.White);
+            }
+            mainPcBx.Invalidate();
+        }
+    }
+
     private void FillPixel(int x, int y)
     {
         lock (_bmpLock)

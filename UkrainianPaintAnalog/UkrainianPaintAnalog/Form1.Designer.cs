@@ -179,13 +179,14 @@ partial class Form1
         this.eraserBtn.Cursor = Cursors.Hand;
         this.modePanel.Controls.Add(eraserBtn);
         
-        // кнопка на переключение в затирачку
+        // кнопка на очищение холста
         string trashPath = Path.Combine(Application.StartupPath, "sysmedia", "musorka.png");
         this.trashBtn.Image = Image.FromFile(trashPath);
         this.trashBtn.SizeMode = PictureBoxSizeMode.StretchImage;
         this.trashBtn.Location = new Point(55, 10);
         this.trashBtn.Size = new Size(70, 70);
         this.trashBtn.Cursor = Cursors.Hand;
+        this.trashBtn.MouseClick += ClearHolst;
         this.modePanel.Controls.Add(trashBtn);
         
         
